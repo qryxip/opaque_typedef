@@ -1,5 +1,7 @@
 //! Opaque typedef for `[T]`.
 
+use opaque_typedef_macros::{OpaqueTypedef, OpaqueTypedefUnsized};
+
 /// Local result type.
 ///
 /// If the `opaque_typedef` crate has some kind of bug, this may used instead of

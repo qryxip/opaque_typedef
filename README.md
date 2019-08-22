@@ -43,22 +43,14 @@ Think `struct Outer(Inner);`:
 
 Examples are in [`opaque_typedef_tests/src/`](https://github.com/lo48576/opaque_typedef/tree/develop/opaque_typedef_tests/src).
 
-### 1. Specify "extern crate"
+### 1. Add `opaque_typedef` and `opaque_typedef_macros` to `dependencies`
 
 `Cargo.toml`:
 
 ```toml
 [dependencies]
-opaque_typedef = "^0.0.4"
-opaque_typedef_macros = "^0.0.4"
-```
-
-`lib.rs` or `main.rs`:
-
-```rust
-extern crate opaque_typedef;
-#[macro_use]
-extern crate opaque_typedef_macros;
+opaque_typedef = "^0.0.5"
+opaque_typedef_macros = "^0.0.5"
 ```
 
 ### 2. Derive `OpaqueTypedef` for sized types, `OpaqueTypedefUnsized` for unsized types
@@ -66,6 +58,8 @@ extern crate opaque_typedef_macros;
 Sized type:
 
 ```rust
+use opaque_typedef_macros::OpaqueTypedef;
+
 /// My owned string.
 #[derive(Default, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, OpaqueTypedef)]
 pub struct MyString(String);
@@ -74,6 +68,8 @@ pub struct MyString(String);
 Unsized type:
 
 ```rust
+use opaque_typedef_macros::OpaqueTypedefUnsized;
+
 /// My string slice.
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash, OpaqueTypedefUnsized)]
 #[repr(C)]
@@ -94,6 +90,8 @@ or traits who might mutate inner value (such as `AddAssign`), you should specify
 
 
 ```rust
+use opaque_typedef_macros::OpaqueTypedefUnsized;
+
 /// My string slice.
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash, OpaqueTypedefUnsized)]
 #[repr(C)]
@@ -110,6 +108,8 @@ You can specify traits with `#[opaque_typedef(derive(Trait1, Trait2, ...))]`.
 For example:
 
 ```rust
+use opaque_typedef_macros::OpaqueTypedefUnsized;
+
 #[derive(Debug, PartialEq, Eq, PartialOrd, Ord, Hash, OpaqueTypedefUnsized)]
 #[repr(C)]
 #[opaque_typedef(derive(AsciiExt, AsMut(Deref, Self), AsRef(Deref, Self), DefaultRef, Deref,
@@ -140,6 +140,8 @@ To see full list of shortened notations for "derive"-able items, see
 If you specify `Deref`, `DerefMut`, `AsRefDeref` or something related to `Deref`, you can also specify "deref target" by `#[opaque_typedef(deref(...))]`.
 
 ```rust
+use opaque_typedef_macros::OpaqueTypedef;
+
 /// My owned string.
 #[derive(Default, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, OpaqueTypedef)]
 #[opaque_typedef(derive(AsMut(Deref, Inner), AsRef(Deref, Inner), Deref, DerefMut, Display,
@@ -197,6 +199,8 @@ The example below is taken from [`opaque_typedef_tests/src/even32.rs`](opaque_ty
 and [`opaque_typedef_tests/tests/even32.rs`](opaque_typedef_tests/tests/even32.rs).
 
 ```rust
+use opaque_typedef_macros::OpaqueTypedef;
+
 /// Even `i32`.
 #[derive(Default, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, OpaqueTypedef)]
 #[opaque_typedef(derive(Binary, Deref, Display, FromInner, PartialEq(Inner, InnerRev),
@@ -264,6 +268,8 @@ The example below is taken from
 and [`opaque_typedef_tests/tests/reverse_order.rs`](opaque_typedef_tests/tests/reverse_order.rs).
 
 ```rust
+use opaque_typedef_macros::OpaqueTypedef;
+
 /// A wrapper type with reverse order.
 #[derive(Default, Debug, Clone, Copy, PartialEq, Eq, Ord, Hash, OpaqueTypedef)]
 #[opaque_typedef(derive(AsciiExt, AsMut(Deref), AsRef(Deref), Binary, Deref, DerefMut, Display,

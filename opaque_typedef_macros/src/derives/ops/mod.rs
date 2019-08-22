@@ -1,11 +1,11 @@
 //! Impl generators for general unary / binary operator traits.
 
 use proc_macro2::TokenStream;
-use quote::ToTokens;
-use syn;
+use quote::{quote, ToTokens};
+use strum_macros::EnumString;
 
-use derives::Derive;
-use type_props::TypeProps;
+use crate::derives::Derive;
+use crate::type_props::TypeProps;
 
 pub mod binary;
 pub mod unary;

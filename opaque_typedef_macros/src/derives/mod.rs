@@ -3,15 +3,15 @@
 use std::borrow::Cow;
 use std::collections::HashMap;
 
+use lazy_static::lazy_static;
 use proc_macro2::TokenStream;
-use quote::ToTokens;
-use syn;
+use quote::{quote, ToTokens};
+use strum_macros::{AsRefStr, EnumProperty, EnumString};
 
-use attrs::{get_meta_content_by_path, is_attr_with_path};
-use type_props::{Sizedness, TypeProps};
-use utils::extend_generics;
-
-use self::ops::OpSpec;
+use crate::attrs::{get_meta_content_by_path, is_attr_with_path};
+use crate::derives::ops::OpSpec;
+use crate::type_props::{Sizedness, TypeProps};
+use crate::utils::extend_generics;
 
 mod as_ref;
 mod cmp;

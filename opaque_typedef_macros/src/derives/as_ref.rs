@@ -1,9 +1,9 @@
 //! Impl generators for `std::convert::As*` traits.
 
 use proc_macro2::TokenStream;
-use quote::ToTokens;
+use quote::{quote, ToTokens};
 
-use type_props::TypeProps;
+use crate::type_props::TypeProps;
 
 use super::deref::{gen_deref_expr, gen_deref_mut_expr};
 use super::Derive;

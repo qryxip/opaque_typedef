@@ -1,8 +1,5 @@
 //! Tests for `even32` types.
 
-extern crate opaque_typedef;
-extern crate opaque_typedef_tests;
-
 use opaque_typedef_tests::even32::Even32;
 
 mod basic {

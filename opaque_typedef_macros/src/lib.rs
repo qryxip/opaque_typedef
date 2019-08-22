@@ -1,21 +1,12 @@
 //! Custom derives for easy opaque typedef.
 #![recursion_limit = "128"]
 
-#[macro_use]
-extern crate lazy_static;
 extern crate proc_macro;
-extern crate proc_macro2;
-#[macro_use]
-extern crate quote;
-extern crate strum;
-#[macro_use]
-extern crate strum_macros;
-extern crate syn;
 
 use proc_macro2::TokenStream;
 use syn::DeriveInput;
 
-use type_props::{Sizedness, TypeProps};
+use crate::type_props::{Sizedness, TypeProps};
 
 mod attrs;
 mod derives;

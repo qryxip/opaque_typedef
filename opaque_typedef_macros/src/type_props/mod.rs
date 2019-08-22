@@ -1,13 +1,11 @@
 //! Type properties.
 
 use proc_macro2::TokenStream;
-use quote::ToTokens;
-use syn;
+use quote::{quote, ToTokens};
 use syn::DeriveInput;
 
-use derives::Derive;
-
-use self::builder::TypePropsBuilder;
+use crate::derives::Derive;
+use crate::type_props::builder::TypePropsBuilder;
 
 mod builder;
 

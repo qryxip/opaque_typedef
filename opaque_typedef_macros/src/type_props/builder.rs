@@ -4,10 +4,10 @@ use quote::ToTokens;
 use syn;
 use syn::DeriveInput;
 
-use attrs::{get_meta_content_by_path, has_word_meta, is_attr_with_path};
-use derives::Derive;
-use type_props::{CmpSpec, DerefSpec, Field, Sizedness, TypeProps, ValidationSpec};
-use utils::expect_singleton_iter;
+use crate::attrs::{get_meta_content_by_path, has_word_meta, is_attr_with_path};
+use crate::derives::Derive;
+use crate::type_props::{CmpSpec, DerefSpec, Field, Sizedness, TypeProps, ValidationSpec};
+use crate::utils::expect_singleton_iter;
 
 /// Returns `#[repr(..)]` metadata.
 fn get_repr_meta(attrs: &[syn::Attribute]) -> Option<syn::Meta> {

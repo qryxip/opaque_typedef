@@ -3,11 +3,10 @@
 use std::borrow::Cow;
 
 use proc_macro2::TokenStream;
-use quote::ToTokens;
-use syn;
+use quote::{quote, ToTokens};
 
-use type_props::TypeProps;
-use utils::extend_generics;
+use crate::type_props::TypeProps;
+use crate::utils::extend_generics;
 
 use super::Derive;
 

@@ -1,5 +1,7 @@
 //! A wrapper type with reverse order.
 
+use opaque_typedef_macros::OpaqueTypedef;
+
 /// A wrapper type with reverse order.
 #[derive(Default, Debug, Clone, Copy, PartialEq, Eq, Hash, OpaqueTypedef)]
 // `IntoInner` cannot be used (and even you can't implement it manually),

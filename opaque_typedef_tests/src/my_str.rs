@@ -1,5 +1,7 @@
 //! Opaque typedef for `str`.
 
+use opaque_typedef_macros::{OpaqueTypedef, OpaqueTypedefUnsized};
+
 /// My string slice.
 // Note:
 //      `PartialEqSelfCowAndInner` cannot be used because it generates

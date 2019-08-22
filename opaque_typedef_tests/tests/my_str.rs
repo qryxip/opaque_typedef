@@ -1,8 +1,5 @@
 //! Tests for `my_str` types.
 
-extern crate opaque_typedef;
-extern crate opaque_typedef_tests;
-
 use opaque_typedef_tests::my_str::{MyStr, MyString};
 
 mod my_str {

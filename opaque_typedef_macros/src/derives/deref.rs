@@ -1,8 +1,9 @@
 //! Impl generators for `std::ops::Deref*` traits.
 
 use proc_macro2::TokenStream;
+use quote::quote;
 
-use type_props::TypeProps;
+use crate::type_props::TypeProps;
 
 use super::Derive;
 

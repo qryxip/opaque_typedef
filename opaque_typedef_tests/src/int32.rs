@@ -1,5 +1,7 @@
 //! Opaque typedef for `i32`.
 
+use opaque_typedef_macros::OpaqueTypedef;
+
 /// `i32`.
 #[derive(Default, Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, OpaqueTypedef)]
 #[opaque_typedef(derive(

@@ -1,8 +1,5 @@
 //! Tests for `atleast2items` types.
 
-extern crate opaque_typedef;
-extern crate opaque_typedef_tests;
-
 use opaque_typedef_tests::atleast2items::{SliceAtLeast2Items, VecAtLeast2Items};
 
 mod slice {
