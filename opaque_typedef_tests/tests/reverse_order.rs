@@ -85,6 +85,7 @@ mod sized {
             //assert_eq!(raw_x + y, sum);
         }
 
+        #[allow(clippy::op_ref)]
         #[test]
         fn add_ref() {
             let raw_x = 10;

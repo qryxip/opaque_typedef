@@ -1,5 +1,7 @@
 //! Tests for `my_str` types.
 
+use std::fmt::Display;
+
 use opaque_typedef_tests::my_str::{MyStr, MyString};
 
 mod my_str {
@@ -76,7 +78,7 @@ mod my_str {
     fn display() {
         let ok_str = "foobar";
         let my_str = MyStr::new(ok_str);
-        assert_eq!(format!("{}", ok_str), format!("{}", my_str));
+        assert_eq!(Display::to_string(&ok_str), Display::to_string(&my_str));
     }
 
     #[test]
@@ -326,7 +328,10 @@ mod my_string {
     fn display() {
         let ok_string = "foobar".to_owned();
         let my_string = MyString::from_string(ok_string.clone());
-        assert_eq!(format!("{}", ok_string), format!("{}", my_string));
+        assert_eq!(
+            Display::to_string(&ok_string),
+            Display::to_string(&my_string),
+        );
     }
 
     #[test]

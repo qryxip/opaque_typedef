@@ -174,6 +174,7 @@ mod ops {
         assert_eq!(x + y, sum);
     }
 
+    #[allow(clippy::op_ref)]
     #[test]
     fn add_ref() {
         let raw_x = 10;

@@ -43,14 +43,10 @@ fn append_meta_content_by_path(meta: syn::Meta, path: &[&str], vec: &mut Vec<syn
     if path.is_empty() {
         return;
     }
-    assert!(!path.is_empty());
-    match meta {
-        syn::Meta::List(metalist) => {
-            if metalist.ident == path[0] {
-                append_meta_items_by_path(metalist.nested, &path[1..], vec);
-            }
+    if let syn::Meta::List(metalist) = meta {
+        if metalist.ident == path[0] {
+            append_meta_items_by_path(metalist.nested, &path[1..], vec);
         }
-        syn::Meta::Word(..) | syn::Meta::NameValue(..) => return,
     }
 }
 
